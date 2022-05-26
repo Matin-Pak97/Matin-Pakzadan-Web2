@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ entity.name }}{% endblock %}
+
+{% block body %}
+    <ul>
+        <li>Name: {{ entity.name }}</li>
+        <li>Short Description: {{ entity.shortDescription }}</li>
+        <li>Full Description: {{ entity.fullDescription }}</li>
+        <li>Score: {{ entity.score }}</li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ entity.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ entity.name }}</h1>
+    <form method="POST">
+        <div>
+            <label>Name: </label>
+            <input name="name" type="text" value="{{ entity.name }}"/>
+        </div>
+        <div>
+            <label>Short Description: </label>
+            <input name="short_description" type="text" value="{{ entity.shortDescription }}"/>
+        </div>
+        <div>
+            <label>Full Description: </label>
+            <input name="full_description" type="text" value="{{ entity.fullDescription }}"/>
+        </div>
+        <div>
+            <label>Score: </label>
+            <input name="score" type="text" value="{{ entity.score }}"/>
+        </div>
+
+        <input type="submit">
+    </form>
+{% endblock %}
