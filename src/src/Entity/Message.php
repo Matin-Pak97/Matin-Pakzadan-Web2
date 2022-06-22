@@ -2,13 +2,20 @@
 
 namespace App\Entity;
 
+use App\Model\TimeInterface;
+use App\Model\TimeTrait;
+use App\Model\UserInterface;
+use App\Model\UserTrait;
 use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
-class Message
+class Message implements TimeInterface, UserInterface
 {
+    use TimeTrait;
+    use UserTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -21,14 +28,6 @@ class Message
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank()]
     private $sender;
-
-    #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\NotNull()]
-    private $createdAt;
-
-    #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\NotNull()]
-    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -55,30 +54,6 @@ class Message
     public function setSender(string $sender): self
     {
         $this->sender = $sender;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
 
         return $this;
     }

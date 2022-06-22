@@ -25,8 +25,6 @@ class MessageController extends AbstractController
     public function new(Request $request, MessageRepository $messageRepository): Response
     {
         $message = new Message();
-        $message->setCreatedAt(new \DateTimeImmutable());
-        $message->setUpdatedAt(new \DateTimeImmutable());
 
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
@@ -54,8 +52,6 @@ class MessageController extends AbstractController
     #[Route('/{id}/edit', name: 'app_message_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Message $message, MessageRepository $messageRepository): Response
     {
-        $message->setUpdatedAt(new \DateTimeImmutable());
-
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 

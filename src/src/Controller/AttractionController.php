@@ -52,8 +52,6 @@ class AttractionController extends AbstractController
             $attraction->setShortDescription($shortDesc);
             $attraction->setFullDescription($fullDesc);
             $attraction->setScore($score);
-            $attraction->setCreatedAt(new \DateTimeImmutable());
-            $attraction->setUpdatedAt(new \DateTimeImmutable());
 
             $this->entityManager->persist($attraction);
             $this->entityManager->flush();
@@ -81,7 +79,6 @@ class AttractionController extends AbstractController
             $attraction->setShortDescription($shortDesc);
             $attraction->setFullDescription($fullDesc);
             $attraction->setScore($score);
-            $attraction->setUpdatedAt(new \DateTimeImmutable());
 
             $this->entityManager->persist($attraction);
             $this->entityManager->flush();
