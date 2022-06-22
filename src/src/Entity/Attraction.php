@@ -2,34 +2,36 @@
 
 namespace App\Entity;
 
+use App\Model\TimeInterface;
+use App\Model\TimeTrait;
+use App\Model\UserInterface;
+use App\Model\UserTrait;
 use App\Repository\AttractionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AttractionRepository::class)]
-class Attraction
+#[ORM\MappedSuperclass]
+class Attraction implements TimeInterface, UserInterface
 {
+    use TimeTrait;
+    use UserTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    protected $name;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $shortDescription;
+    protected $shortDescription;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $fullDescription;
+    protected $fullDescription;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $score;
-
-    #[ORM\Column(type: 'datetime_immutable')]
-    private $createdAt;
-
-    #[ORM\Column(type: 'datetime_immutable')]
-    private $updatedAt;
+    protected $score;
 
     public function getId(): ?int
     {
@@ -80,30 +82,6 @@ class Attraction
     public function setScore(?int $score): self
     {
         $this->score = $score;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
 
         return $this;
     }

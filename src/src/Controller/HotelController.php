@@ -6,6 +6,7 @@ use App\Entity\Hotel;
 use App\Form\HotelType;
 use App\Repository\HotelRepository;
 use App\Service\HotelServices;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,15 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/hotel')]
 class HotelController extends AbstractController
 {
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(
+        EntityManagerInterface $entityManager
+    )
+    {
+        $this->entityManager = $entityManager;
+    }
+
     #[Route('/', name: 'app_hotel_index', methods: ['GET'])]
     public function index(HotelRepository $hotelRepository): Response
     {
@@ -30,8 +40,6 @@ class HotelController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hotel->setCreatedAt(new \DateTimeImmutable());
-            $hotel->setUpdatedAt(new \DateTimeImmutable());
 
             $hotelRepository->add($hotel, true);
 
@@ -70,7 +78,6 @@ class HotelController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hotel->setUpdatedAt(new \DateTimeImmutable());
 
             $hotelRepository->add($hotel, true);
 
@@ -87,7 +94,8 @@ class HotelController extends AbstractController
     public function delete(Request $request, Hotel $hotel, HotelRepository $hotelRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$hotel->getId(), $request->request->get('_token'))) {
-            $hotelRepository->remove($hotel, true);
+            $this->entityManager->remove($hotel);
+            $this->entityManager->flush();
         }
 
         return $this->redirectToRoute('app_hotel_index', [], Response::HTTP_SEE_OTHER);
