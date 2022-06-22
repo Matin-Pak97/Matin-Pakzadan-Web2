@@ -14,6 +14,10 @@ RUN apt-get update -y && apt-get install -y git
 # install mysql driver
 RUN docker-php-ext-install pdo_mysql
 
+# install npm
+RUN apt-get -y install nodejs npm
+RUN npm install --global yarn
+
 # install xdebug
 # https://hub.docker.com/_/php
 RUN pecl install xdebug && docker-php-ext-enable xdebug
