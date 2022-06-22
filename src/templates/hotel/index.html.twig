@@ -5,6 +5,11 @@
 {% block body %}
     <h1>Hotel index</h1>
 
+    <form method="GET" action="{{ path('app_hotel_search') }}">
+        <input name="hotel_name" type="text" {% if query is defined %}value="{{ query }}"{% endif %}>
+        <button type="submit">Search</button>
+    </form>
+
     <table class="table">
         <thead>
             <tr>
