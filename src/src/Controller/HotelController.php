@@ -35,6 +35,7 @@ class HotelController extends AbstractController
     #[Route('/new', name: 'app_hotel_new', methods: ['GET', 'POST'])]
     public function new(Request $request, HotelRepository $hotelRepository): Response
     {
+        $this->denyAccessUnlessGranted('CREATE', $request);
         $hotel = new Hotel();
         $form = $this->createForm(HotelType::class, $hotel);
         $form->handleRequest($request);
@@ -66,6 +67,7 @@ class HotelController extends AbstractController
     #[Route('/{id}', name: 'app_hotel_show', methods: ['GET'])]
     public function show(Hotel $hotel): Response
     {
+        $this->denyAccessUnlessGranted('VIEW', $hotel);
         return $this->render('hotel/show.html.twig', [
             'hotel' => $hotel,
         ]);
@@ -74,6 +76,7 @@ class HotelController extends AbstractController
     #[Route('/{id}/edit', name: 'app_hotel_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Hotel $hotel, HotelRepository $hotelRepository): Response
     {
+        $this->denyAccessUnlessGranted('EDIT', $hotel);
         $form = $this->createForm(HotelType::class, $hotel);
         $form->handleRequest($request);
 
@@ -93,6 +96,7 @@ class HotelController extends AbstractController
     #[Route('/{id}', name: 'app_hotel_delete', methods: ['POST'])]
     public function delete(Request $request, Hotel $hotel, HotelRepository $hotelRepository): Response
     {
+        $this->denyAccessUnlessGranted('DELETE', $hotel);
         if ($this->isCsrfTokenValid('delete'.$hotel->getId(), $request->request->get('_token'))) {
             $this->entityManager->remove($hotel);
             $this->entityManager->flush();

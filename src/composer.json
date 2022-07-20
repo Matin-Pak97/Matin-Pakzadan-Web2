@@ -25,6 +25,7 @@
         "symfony/runtime": "6.0.*",
         "symfony/security-bundle": "6.0.*",
         "symfony/security-csrf": "6.0.*",
+        "symfony/translation": "6.0.*",
         "symfony/twig-bundle": "6.0.*",
         "symfony/validator": "6.0.*",
         "symfony/webpack-encore-bundle": "^1.14",
@@ -91,7 +92,6 @@
         "symfony/maker-bundle": "^1.43",
         "symfony/phpunit-bridge": "^6.1",
         "symfony/stopwatch": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*",
-      "ext-http": "*"
+        "symfony/web-profiler-bundle": "6.0.*"
     }
 }
