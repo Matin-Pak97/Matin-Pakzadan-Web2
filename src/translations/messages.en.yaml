@@ -1,0 +1,35 @@
+general:
+  entity:
+    created_at: 'Created At'
+    updated_at: 'Updated At'
+  back_to_list:
+    label: 'Back to list'
+  search: 'Search'
+  table:
+    action:
+      label: 'Actions'
+      show: 'Show'
+      edit: 'Edit'
+    no_record: 'No records found'
+  actions:
+    save: 'Save'
+
+hotel:
+  common:
+    entity:
+      label: 'Hotel'
+      id: 'ID'
+      name: 'Name'
+      address: 'Address'
+
+  index:
+    label: 'Hotel Index'
+
+
+  create:
+    label: 'Create'
+    title: 'Create new Hotel'
+
+  edit:
+    label: 'Edit'
+    title: 'Edit Hotel'

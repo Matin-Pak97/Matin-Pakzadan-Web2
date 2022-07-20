@@ -3,36 +3,36 @@
 {% block title %}Hotel{% endblock %}
 
 {% block body %}
-    <h1>Hotel</h1>
+    <h1>{{ 'hotel.common.entity.label'|trans }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'hotel.common.entity.id'|trans }}</th>
                 <td>{{ hotel.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>{{ 'hotel.common.entity.name'|trans }}</th>
                 <td>{{ hotel.name }}</td>
             </tr>
             <tr>
-                <th>Address</th>
+                <th>{{ 'hotel.common.entity.address'|trans }}</th>
                 <td>{{ hotel.address }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>{{ 'general.entity.created_at'|trans }}</th>
                 <td>{{ hotel.createdAt ? hotel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
+                <th>{{ 'general.entity.updated_at'|trans }}</th>
                 <td>{{ hotel.updatedAt ? hotel.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_hotel_index') }}">back to list</a>
+    <a href="{{ path('app_hotel_index') }}">{{ 'general.back_to_list.label'|trans }}</a>
 
-    <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}">edit</a>
+    <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}">{{ 'hotel.edit.label'|trans }}</a>
 
     {{ include('hotel/_delete_form.html.twig') }}
 {% endblock %}

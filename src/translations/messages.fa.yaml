@@ -1,0 +1,35 @@
+general:
+  entity:
+    created_at: 'تاریخ ساخت'
+    updated_at: 'تاریخ ویرایش'
+  back_to_list:
+    label: 'برگشت به لیست'
+  search: 'جستجو'
+  table:
+    action:
+      label: 'اقدامات'
+      show: 'نمایش'
+      edit: 'ویرایش'
+    no_record: 'هیچ اطلاعاتی یافت نشد'
+  actions:
+    save: 'ذخیره'
+
+hotel:
+  common:
+    entity:
+      label: 'هتل'
+      id: 'شناسه'
+      name: 'اسم'
+      address: 'آدرس'
+
+  index:
+    label: 'لیست هتل ها'
+
+
+  create:
+    label: 'ساختن'
+    title: 'ساختن هتل جدید'
+
+  edit:
+    label: 'ویرایش'
+    title: 'ویرایش هتل'
