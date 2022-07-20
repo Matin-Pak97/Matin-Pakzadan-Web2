@@ -29,11 +29,11 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/admin, roles: ROLE_USER }
-        - { path: ^/attractions, roles: ROLE_USER }
-        - { path: ^/message, roles: ROLE_USER }
-        - { path: ^/hotel, roles: ROLE_USER }
-        - { path: ^/room, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/attractions, roles: [ROLE_ADMIN, ROLE_USER, HOTEL_OWNER, EDITOR] }
+        - { path: ^/message, roles: [ROLE_ADMIN, ROLE_USER, HOTEL_OWNER, EDITOR] }
+        - { path: ^/hotel, roles: [ROLE_ADMIN, ROLE_USER, HOTEL_OWNER, EDITOR] }
+        - { path: ^/room, roles: [ROLE_ADMIN, ROLE_USER, HOTEL_OWNER, EDITOR] }
 
 when@test:
     security:
