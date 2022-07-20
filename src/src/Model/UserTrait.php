@@ -16,7 +16,7 @@ trait UserTrait
     private $updatedBy;
 
     /**
-     * @return mixed
+     * @return User
      */
     public function getCreatedBy()
     {
@@ -32,7 +32,7 @@ trait UserTrait
     }
 
     /**
-     * @return mixed
+     * @return User
      */
     public function getUpdatedBy()
     {
