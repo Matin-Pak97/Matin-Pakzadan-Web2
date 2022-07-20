@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Entity\Hotel;
 use App\Repository\HotelRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use \http\Exception\InvalidArgumentException;
 
 class HotelServices
 {
@@ -27,5 +28,13 @@ class HotelServices
      */
     public function searchHotel($hotelName):array {
         return $this->hotelRepository->search($hotelName);
+    }
+
+    public function lowerCaseToCapitalHotelName(?string $hotelName) {
+        if ($hotelName === null) {
+            throw new InvalidArgumentException("Parameter is invalid!");
+        }
+
+        return strtoupper($hotelName);
     }
 }
