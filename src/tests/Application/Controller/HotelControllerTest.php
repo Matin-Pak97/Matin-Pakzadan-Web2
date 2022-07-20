@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Application\Controller;
 
-use App\Controller\HotelController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 
@@ -13,7 +12,7 @@ class HotelControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/hotel/index');
+        $crawler = $client->request('GET', '/hotel/index/');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Hotel index');
